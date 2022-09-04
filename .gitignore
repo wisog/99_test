@@ -1,0 +1,10 @@
+__pycache__/
+build/
+develop-eggs/
+dist/
+instance/
+.webassets-cache
+.env
+.venv
+venv/
+.idea/
