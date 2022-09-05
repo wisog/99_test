@@ -4,7 +4,9 @@ MVP test project for the backend position at 99minutos.
 Created with Python/Flask Stack.
 
 ### Installation:
-It's recommended to use a virtual environment
+It's recommended to use a virtual environment.
+
+use `pip3 install -r requirements.txt`  to install needed libraries
 
 ### Usage:
 It should be run with the command `python3 app.py`
@@ -40,3 +42,5 @@ To generate the first users (1 admin & 1 general user) we'll use:
 > user = User('client', 'clientpwd')
 > 
 > user.save()
+---
+ You'll need to revist **99minutos_test.postman_collection.json** for requests examples.
