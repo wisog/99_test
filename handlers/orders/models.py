@@ -78,7 +78,7 @@ class Order(BaseModel):
         self.user_id = user_id
         self.origin_id = origin_id
         self.destination_id = destination_id
-        self.status = self.OrdersStatus.CREATED.value
+        self.status = self.OrdersStatus.creado.value
 
     def add_product(self, product):
         # Validations, stock check, user_credit, etc

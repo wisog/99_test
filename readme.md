@@ -7,7 +7,11 @@ Created with Python/Flask Stack.
 It's recommended to use a virtual environment
 
 ### Usage:
-`python3 app.py`
+It should be run with the command `python3 app.py`
+
+In order to use the api a token is needed, you can get one for the admin using
+`curl --location --request POST 'http://127.0.0.1:5000/' 
+--form 'username="admin"' --form 'password="admin"'`
 
 ### Notes:
 In order to have a easier testing we're using SQLite as the BD engine, we can change that
