@@ -1,13 +1,38 @@
 # Description
+MVP test project for the backend position at 99minutos.
 
+Created with Python/Flask Stack.
 
-Installation:
-
+### Installation:
 It's recommended to use a virtual environment
 
-Usage:
-python3 app.py
+### Usage:
+`python3 app.py`
 
-Troubleshooting:
+### Notes:
+In order to have a easier testing we're using SQLite as the BD engine, we can change that
+setting a BD Connection URI on `DATABASE_URI` env variable.
 
-Notes:
+If DB file doesn't exist we need to generate the DB schema using:
+
+>flask shell
+> 
+>from app import db
+>
+>db.create_all()
+
+and then we can generate rows or query data Using the ORM Layer. 
+To generate the first users (1 admin & 1 general user) we'll use:
+
+
+> from handlers.users.models import User
+
+> admin_user = User('admin', 'admin')
+> 
+> admin_user.is_admin = True
+> 
+> admin_user.save()
+ 
+> user = User('client', 'clientpwd')
+> 
+> user.save()
