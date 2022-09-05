@@ -1,4 +1,6 @@
 import logging
+import csv
+import codecs
 
 from handlers.orders.models import Order, Destination, Product
 from handlers.users.models import User
@@ -117,6 +119,52 @@ def create_order():
         return make_response(err.messages, 400)
     except Exception as e:
         return make_response({"error": f"{e.args[0]}"}, 503)
+
+
+@ORDERS_BLUEPRINT.route('/orders/from_csv', methods=['POST'])
+@authorized
+def create_order_from_csv():
+    f = request.files['fileupload']
+
+    data = []
+    stream = codecs.iterdecode(f.stream, 'utf-8')
+    for row in csv.reader(stream, dialect=csv.excel):
+        print(row)
+        if row:
+            data.append(row)
+
+    orders = {}
+    # ['origen', 'destino', 'peso', 'sku', 'order_id'
+
+    for row in data[1:]:
+        origin = Destination.query.get(row[0])
+        destination = Destination.query.get(row[1])
+        if float(row[2]) > 25:
+            raise Exception("Invalid weight, contact support")
+        product_obj = Product(int(row[2]), row[3])
+        product_obj.save()
+        order_key = row[4]
+        if order_key in orders:
+            orders[order_key]['products'].append(product_obj)
+        else:
+            orders[order_key] = {
+                'origin': origin,
+                'destination': destination,
+                'products': [product_obj]
+            }
+    orders_response = []
+    for k, v in orders.items():
+        ori = v['origin']
+        dest = v['destination']
+        prods = v['products']
+
+        new_order = Order(g.user.id, ori.id, dest.id)
+        for pro in prods:
+            new_order.add_product(pro)
+        new_order.save()
+        orders_response.append(OrderSchema().dump(new_order))
+    print(orders)
+    return make_response(jsonify(orders_response), 201)
 
 
 @ORDERS_BLUEPRINT.route('/destinations/', methods=['GET'])
