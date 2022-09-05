@@ -1,0 +1,336 @@
+{
+	"info": {
+		"_postman_id": "ef35b486-99f4-4539-9092-6ab0aed79383",
+		"name": "99minutos_test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "408837"
+	},
+	"item": [
+		{
+			"name": "Token_creation",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "client",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "clientpwd",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/login",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User_creation",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"user_nuevo\",\n    \"password\": \"password\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/v1/users",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"v1",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User_get",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/v1/users/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"v1",
+						"users",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Destinations_creation",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MiwiZXhwIjoxNjYyMzk2OTc3fQ.KoJFOzU73H7IGhy7iE-APk4-24x_DH7FNr2BCWmBGOk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"address\": \"jose maria arteaga\",\n    \"city\": \"Aguascalientes\",\n    \"ext_num\": \"620\",\n    \"int_num\": \"B\",\n    \"latitude\": \"21.889485589768206\",\n    \"longitude\": \"-102.29252165584757\",\n    \"name\": \"casa\",\n    \"zipcode\": 20050\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/v1/destinations/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"v1",
+						"destinations",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Destinations_get",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MiwiZXhwIjoxNjYyMzk2OTc3fQ.KoJFOzU73H7IGhy7iE-APk4-24x_DH7FNr2BCWmBGOk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/v1/destinations/18",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"v1",
+						"destinations",
+						"18"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Orders_creation",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MiwiZXhwIjoxNjYyMzk2NDgyfQ.7BYRC0NQ-xlBf-XWs0PyMOcznE9aAjVLnqmoPudAajQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"origin\": 1,\n    \"destination\": {\n        \"address\": \"Bonampak\",\n        \"city\": \"Aguascalientes\",\n        \"ext_num\": \"208\",\n        \"latitude\": \"20.889485589768206\",\n        \"longitude\": \"-112.29252165584757\",\n        \"name\": \"casa Suegros\",\n        \"zipcode\": 20264\n    },\n    \"products\": [{\n        \"weight\": 2.64,\n        \"sku\": \"XXXVA\"\n    },\n    {\n        \"weight\": 14.5,\n        \"sku\": \"XXXVAFSR\"\n    }]\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/v1/orders/6",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"v1",
+						"orders",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Orders_get",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MiwiZXhwIjoxNjYyMzk2NDgyfQ.7BYRC0NQ-xlBf-XWs0PyMOcznE9aAjVLnqmoPudAajQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/v1/orders/7",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"v1",
+						"orders",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Orders_patch",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MiwiZXhwIjoxNjYyMzk2NDgyfQ.7BYRC0NQ-xlBf-XWs0PyMOcznE9aAjVLnqmoPudAajQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"new_status\": \"entregado\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/v1/orders/7",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"v1",
+						"orders",
+						"7"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
