@@ -62,6 +62,8 @@ def patch_order(order_id):
         order = Order.query.get(order_id)
         if not order:
             return make_response(f"Order {order_id} doesn't exist", 404)
+        if not g.user.is_admin and order.user_id != g.user.id:
+            return make_response(jsonify({"error": "you don't have access to this order"}), 401)
 
         new_status = data_json["new_status"]
         if new_status not in Order.OrdersStatus.list():
