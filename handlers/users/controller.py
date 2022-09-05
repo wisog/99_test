@@ -1,8 +1,8 @@
-import json
 import logging
 
 from handlers.users.models import User
 from handlers.users.schemas import UserSchema
+from utils.authorizers import authorized_admin
 
 from flask import Blueprint, request, make_response, jsonify
 from marshmallow import ValidationError
@@ -12,6 +12,7 @@ logger = logging.getLogger(__name__)
 
 
 @USERS_BLUEPRINT.route('/users/<int:user_id>', methods=['GET'])
+@authorized_admin
 def get_user(user_id):
     user = User.query.get(user_id)
 
